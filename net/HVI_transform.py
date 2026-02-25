@@ -131,7 +131,7 @@ import numpy as np
 
 def tensor_to_colormap(tensor, cmap='viridis'):
     """
-    将单通道tensor映射为伪彩色图像
+    Map a single-channel tensor to a pseudo-color image.
     """
     tensor = tensor.squeeze().cpu().numpy()
     tensor = (tensor - tensor.min()) / (tensor.max() - tensor.min() + 1e-8)
@@ -142,7 +142,7 @@ def tensor_to_colormap(tensor, cmap='viridis'):
 
 def two_channel_to_rgb(t1, t2):
     """
-    将两个通道映射为伪RGB图像：H->R, V->G, B置零
+    Map two channels to a pseudo-RGB image: H → R, V → G, and set B to zero.
     """
     t1 = t1.squeeze().cpu().numpy()
     t2 = t2.squeeze().cpu().numpy()
@@ -155,13 +155,13 @@ def two_channel_to_rgb(t1, t2):
     rgb = np.zeros((H, W, 3), dtype=np.uint8)
     rgb[:, :, 0] = (t1 * 255).astype(np.uint8)  # H -> R
     rgb[:, :, 1] = (t2 * 255).astype(np.uint8)  # V -> G
-    # B 通道为 0
+    # Set the B channel to zero.
     return rgb
 
 def visualize_HVI(image_path, save_dir='/media/HDD/lvyou/HVI-CIDNet/output_vis'):
     os.makedirs(save_dir, exist_ok=True)
 
-    # 读取并转换为Tensor
+    # Read and convert to a tensor
     image = Image.open(image_path).convert('RGB')
     transform = T.Compose([
         T.ToTensor()
@@ -174,52 +174,52 @@ def visualize_HVI(image_path, save_dir='/media/HDD/lvyou/HVI-CIDNet/output_vis')
 
     H, V, I = hvi[:, 0:1], hvi[:, 1:2], hvi[:, 2:3]
 
-    # 打印 H, V, I 通道最大值
+    # Print the max values of the H, V, and I channels.
     print(f"[H max] {H.max().item():.4f}")
     print(f"[V max] {V.max().item():.4f}")
     print(f"[I max] {I.max().item():.4f}")
 
-    # 保存 H、V、I 三个伪彩色图
+    # Save the three pseudo-color images for H, V, and I.
     for comp, name in zip([H, V, I], ['H', 'V', 'I']):
         vis_img = tensor_to_colormap(comp)
         save_path = os.path.join(save_dir, f'{name}.png')
         cv2.imwrite(save_path, cv2.cvtColor(vis_img, cv2.COLOR_RGB2BGR))
         print(f"[Saved] {save_path}")
 
-    # 生成 HV 双通道伪RGB图
+    # Generate an HV two-channel pseudo-RGB image.
     hv_rgb = two_channel_to_rgb(H, V)
     hv_path = os.path.join(save_dir, 'HV.png')
     cv2.imwrite(hv_path, cv2.cvtColor(hv_rgb, cv2.COLOR_RGB2BGR))
     print(f"[Saved HV] {hv_path}")
 
 
-    # ---------------------- 新增：YCrCb 可视化 ----------------------
-    # 转为 numpy 格式（0~255）
+    # ---------------------- Added: YCrCb visualization ----------------------
+    # Convert to NumPy format (0–255).
     img_np = np.array(image)
     img_ycrcb = cv2.cvtColor(img_np, cv2.COLOR_RGB2YCrCb)
 
-    # 拆分 Y, Cr, Cb
+    # Split Y, Cr, and Cb
     Y, Cr, Cb = cv2.split(img_ycrcb)
-    # 打印 YCrCb 每个通道最大值
+    # Print the maximum value of each YCrCb channel.
     print(f"[Y max] {Y.max()}")
     print(f"[Cr max] {Cr.max()}")
     print(f"[Cb max] {Cb.max()}")
 
-    # 保存 Y 通道灰度图
-    # 线性归一化到 [0, 255]
+    # Save the Y-channel grayscale image.
+    # Apply linear normalization to the range [0, 255].
     Y_norm = cv2.normalize(Y, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX)
 
-    # 保存增强后的 Y 通道图像
+    # Save the enhanced Y-channel image.
     y_enhanced_path = os.path.join(save_dir, 'Y_channel_enhanced.png')
     cv2.imwrite(y_enhanced_path, Y_norm.astype(np.uint8))
     print(f"[Saved Enhanced Y channel] {y_enhanced_path}")
 
-    # 构造 CrCb 伪 RGB 图（Cr->R, Cb->G, B=0）
+    # Construct a CrCb pseudo-RGB image (Cr → R, Cb → G, B = 0).
     H, W = Cr.shape
     crcb_rgb = np.zeros((H, W, 3), dtype=np.uint8)
-    crcb_rgb[:, :, 0] = Cr   # R通道 = Cr
-    crcb_rgb[:, :, 1] = Cb   # G通道 = Cb
-    # B通道 = 0
+    crcb_rgb[:, :, 0] = Cr   # R channel = Cr.
+    crcb_rgb[:, :, 1] = Cb   # G channel = Cb.
+    # B channel = 0.
 
     crcb_path = os.path.join(save_dir, 'CrCb.png')
     cv2.imwrite(crcb_path, crcb_rgb)
@@ -227,6 +227,6 @@ def visualize_HVI(image_path, save_dir='/media/HDD/lvyou/HVI-CIDNet/output_vis')
 
 
 if __name__ == "__main__":
-    # 示例路径：你可以替换成自己的图像路径
-    image_path = "/media/HDD/lvyou/HVI-CIDNet/datasets/LOLv2/Real_captured/Train/Low/00045.png"
+    # Example path: you can replace it with your own image path
+    image_path = "/media/HDD/lvyou/BIP-CENet/datasets/LOLv2/Real_captured/Train/Low/00045.png"
     visualize_HVI(image_path)
