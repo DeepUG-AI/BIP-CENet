@@ -2,29 +2,42 @@ Our dataset and key codes will be available after acceptance.
 
 ## Figures
 
-**Fig. 1.** Typical application scenarios of LLIE techniques.  
-![Fig1](img/Fig1.png)
+<p style="font-size:18px; font-family:'Times New Roman', Times, serif; font-weight:700; font-style:italic; margin-bottom:6px;">
+Fig. 1. Typical application scenarios of LLIE techniques.
+</p>
+<img src="img/Fig1.png" alt="Fig1" />
 
-**Fig. 2.** YCbCr-guided HVI enhancement and quantitative validation.  
-![Fig2](img/Fig2.png)
+<p style="font-size:18px; font-family:'Times New Roman', Times, serif; font-weight:700; font-style:italic; margin-bottom:6px;">
+Fig. 2. YCbCr-guided HVI enhancement and quantitative validation.
+</p>
+<img src="img/Fig2.png" alt="Fig2" />
 
-**Fig. 3.** Workflow of the proposed BIP-CENet.  
-![Fig3](img/Fig3.png)
+<p style="font-size:18px; font-family:'Times New Roman', Times, serif; font-weight:700; font-style:italic; margin-bottom:6px;">
+Fig. 3. Workflow of the proposed BIP-CENet.
+</p>
+<img src="img/Fig3.png" alt="Fig3" />
 
-**Fig. 4.** Detailed structure of the GB-CCA.  
-![Fig4](img/Fig4.png)
+<p style="font-size:18px; font-family:'Times New Roman', Times, serif; font-weight:700; font-style:italic; margin-bottom:6px;">
+Fig. 4. Detailed structure of the GB-CCA.
+</p>
+<img src="img/Fig4.png" alt="Fig4" />
 
-**Fig. 5.** Detailed structures of MCPF and GSE-IRB.  
-![Fig5](img/Fig5.png)
+<p style="font-size:18px; font-family:'Times New Roman', Times, serif; font-weight:700; font-style:italic; margin-bottom:6px;">
+Fig. 5. Detailed structures of MCPF and GSE-IRB.
+</p>
+<img src="img/Fig5.png" alt="Fig5" />
 
-**Fig. 6.** Visual comparison on the LOLv2-Real dataset.  
-![Fig6](img/Fig6.png)
+<p style="font-size:18px; font-family:'Times New Roman', Times, serif; font-weight:700; font-style:italic; margin-bottom:6px;">
+Fig. 6. Visual comparison on the LOLv2-Real dataset.
+</p>
+<img src="img/Fig6.png" alt="Fig6" />
 
-**Fig. 7.** Visual comparison on the LIME, NPE, and MEF datasets.  
-![Fig7](img/Fig7.png)
+<p style="font-size:18px; font-family:'Times New Roman', Times, serif; font-weight:700; font-style:italic; margin-bottom:6px;">
+Fig. 7. Visual comparison on the LIME, NPE, and MEF datasets.
+</p>
+<img src="img/Fig7.png" alt="Fig7" />
 
-**Fig. 8.** BIP-CENet results in underground engineering scenes.  
-![Fig8](img/Fig8.png)
-
-
-
+<p style="font-size:18px; font-family:'Times New Roman', Times, serif; font-weight:700; font-style:italic; margin-bottom:6px;">
+Fig. 8. BIP-CENet results in underground engineering scenes.
+</p>
+<img src="img/Fig8.png" alt="Fig8" />
