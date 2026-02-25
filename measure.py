@@ -72,19 +72,19 @@ def calculate_psnr(target, ref):
 
 def find_gt_path(label_dir, pred_name):
     """
-    在 label_dir 里根据 pred_name 的基名（不含扩展名）查找对应 GT 文件
-    支持 label_dir 同时包含 png/jpg/jpeg/bmp/webp 等
+    Find the corresponding GT file in label_dir based on the basename of pred_name (without the extension).
+    Supports label_dir containing mixed formats such as png/jpg/jpeg/bmp/webp, etc.
     """
     base = os.path.splitext(pred_name)[0]  # e.g. "0001"
     exts = ["png", "jpg", "jpeg", "bmp", "webp", "tif", "tiff"]
 
-    # 1) 先按常见扩展名顺序尝试（更快更稳定）
+    # 1) Try common extensions first in a typical order (faster and more reliable).
     for ext in exts:
         p = os.path.join(label_dir, f"{base}.{ext}")
         if os.path.exists(p):
             return p
 
-    # 2) 再用 glob 兜底（大小写/其它扩展名）
+    # 2) Fall back to glob (to handle case differences / other extensions).
     cand = glob.glob(os.path.join(label_dir, base + ".*"))
     if len(cand) > 0:
         return cand[0]
@@ -100,13 +100,13 @@ def metrics(im_dir, label_dir, use_GT_mean):
     loss_fn = lpips.LPIPS(net='alex').cuda()
 
     for item in tqdm(sorted(glob.glob(im_dir))):
-        # 预测图
+        
         im1 = Image.open(item).convert('RGB')
 
-        # 文件名（跨平台）
+    
         name = os.path.basename(item)
 
-        # 找 GT（不依赖扩展名）
+    
         gt_path = find_gt_path(label_dir, name)
         if gt_path is None:
             print(f"[WARN] GT not found for {name} in {label_dir} (tried {os.path.splitext(name)[0]}.*), skip.")
@@ -114,7 +114,7 @@ def metrics(im_dir, label_dir, use_GT_mean):
 
         im2 = Image.open(gt_path).convert('RGB')
 
-        # 统一尺寸（注意 PIL size: (W,H)）
+        
         w, h = im2.size
         im1 = im1.resize((w, h), Image.BILINEAR)
 
