@@ -87,7 +87,7 @@ class GB_CCA_HV(nn.Module):
             nn.AdaptiveAvgPool2d(1),
             nn.Conv2d(dim, dim // 4, 1, bias=False),
             nn.ReLU(inplace=True),
-            nn.Conv2d(dim // 4, 2, 1, bias=True),  # 输出两个权重: w_x, w_y
+            nn.Conv2d(dim // 4, 2, 1, bias=True),  
             nn.Sigmoid()
         )
         self.map_proj = nn.Sequential(
@@ -119,7 +119,7 @@ class GB_CCA_I(nn.Module):
             nn.AdaptiveAvgPool2d(1),
             nn.Conv2d(dim, dim // 4, 1, bias=False),
             nn.ReLU(inplace=True),
-            nn.Conv2d(dim // 4, 2, 1, bias=True),  # 输出两个权重: w_x, w_y
+            nn.Conv2d(dim // 4, 2, 1, bias=True),  
             nn.Sigmoid()
         )
         self.map_proj = nn.Sequential(
