@@ -226,7 +226,4 @@ def visualize_HVI(image_path, save_dir='/media/HDD/lvyou/HVI-CIDNet/output_vis')
     print(f"[Saved CrCb] {crcb_path}")
 
 
-if __name__ == "__main__":
-    # Example path: you can replace it with your own image path
-    image_path = "/media/HDD/lvyou/BIP-CENet/datasets/LOLv2/Real_captured/Train/Low/00045.png"
-    visualize_HVI(image_path)
+
