@@ -72,7 +72,7 @@ def extract_HVI_complement_grouped(x, eps=1e-8, normalize=True):
     Y_mean_local = box_blur(Y, k=7)
     Y_weber = (Y - Y_mean_local) / (Y_mean_local + eps)
 
-    Y_lp = box_blur(Y, k=15)  # 近似光照
+    Y_lp = box_blur(Y, k=15)  # approximate lighting
     Y_retinex = torch.log(Y + eps) - torch.log(Y_lp + eps)
 
     k_hvi = 0.2
@@ -159,17 +159,17 @@ class GSEIRB(nn.Module):
         x = self.dw(x)
         x = self.act(x)
 
-        # GLU门控
+        # GLU gating
         x_a, x_b = torch.chunk(x, 2, dim=1)
         x = x_a * torch.sigmoid(x_b)
 
         x = self.pw2(x)
 
-        # SE重标定
+        # SE recalibration
         scale = self.se(x)
         x = x * scale
 
-        # 残差/投影
+        # Residual / projection
         if self.use_residual:
             if self.proj is not None:
                 identity = self.proj(identity)
@@ -275,16 +275,16 @@ class BIPCENet(nn.Module, PyTorchModelHubMixin):
         b_0 = self.HVE_block0_ab(CSPCSP)
         b_1 = self.HVE_block1_ab(b_0)
 
-        # 先融合再编码
+        # Perform fusion before encoding.
         i_enc1 = self.fusion_module1(i_enc1, a_enc1)
         hv_1   = self.fusion_module2(hv_1, b_1)
 
-        # 跳连缓存
+        # Skip-connection cache.
         i_jump0 = (i_enc0)
         hv_jump0 = (hv_0)
 
 
-        # 亮度增强 + 交互
+        # Luminance enhancement + interaction
         a_up1 = self.fem1_y(a_enc1)
         b_up1 = self.fem1(b_1)
 
@@ -294,7 +294,7 @@ class BIPCENet(nn.Module, PyTorchModelHubMixin):
         v_jump1 = i_enc2
         hv_jump1 = hv_2
 
-        # 下采样
+        # Downsampling
         i_enc2 = self.IE_block2(i_enc2)
         hv_2   = self.HVE_block2(hv_2)
 
@@ -309,7 +309,7 @@ class BIPCENet(nn.Module, PyTorchModelHubMixin):
         v_jump2 = i_enc3
         hv_jump2 = hv_3
 
-        # 继续下采样
+        # Further downsample
         i_enc3 = self.IE_block3(i_enc3)
         hv_3   = self.HVE_block3(hv_3)
 
@@ -321,11 +321,11 @@ class BIPCENet(nn.Module, PyTorchModelHubMixin):
         i_enc4 = self.I_3(i_enc3, hv_3, a_up3)
         hv_4   = self.HV_3(hv_3, i_enc3, b_up3)
 
-        # 瓶颈交互
+        # Bottleneck interaction
         i_dec4 = self.I_4(i_enc4, hv_4, a_up3)
         hv_4   = self.HV_4(hv_4, i_enc4, b_up3)
 
-        # 上采样与跳连
+        # Upsampling and skip connections
         hv_3   = self.HVD_block3(hv_4, hv_jump2)
         i_dec3 = self.ID_block3(i_dec4, v_jump2)
 
