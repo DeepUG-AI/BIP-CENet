@@ -1,4 +1,3 @@
-Our dataset and key codes will be available after acceptance.
 
 ## Figures
 
@@ -41,3 +40,4 @@ Fig. 7. Visual comparison on the LIME, NPE, and MEF datasets.
 Fig. 8. BIP-CENet results in underground engineering scenes.
 </p>
 <img src="img/Fig8.png" alt="Fig8" />
+
