@@ -1,11 +1,16 @@
+<p align="right">
+  <a href="./Readme_CN.md">🌐 中文</a> |
+  <a href="./Readme.md">🌐 English</a>
+</p>
+
+<h1 align="center">🌙 BIP-CENet👁️</h1>
+
 <p align="center">
-  <h1 align="center">🌙 BIP-CENet👁️</h1>
-  <p align="center">
-    <strong>BIP-CENet: A Bilateral Prior–Collaborative Enhancement Network with Dual-Domain Priors for Low-Light Image Enhancement</strong>
-  </p>
-  <p align="center">
-    A low-light image enhancement framework built on HVI representation and YCbCr-domain dual priors.
-  </p>
+  <strong>BIP-CENet: A Bilateral Prior–Collaborative Enhancement Network with Dual-Domain Priors for Low-Light Image Enhancement</strong>
+</p>
+
+<p align="center">
+  A low-light image enhancement framework built on HVI representation and YCbCr-domain dual priors.
 </p>
 
 <p align="center">
@@ -163,7 +168,3 @@ You Lv, Ru Zhang, Xinhong Hei, Xiaogang Song, Zetian Zhang, Haiyan Tu, Yuping Ta
 
 **Journal:**  
 Knowledge-Based Systems
-
-
-
-
