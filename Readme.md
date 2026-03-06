@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">🌙 BIP-CENet</h1>
+  <h1 align="center">🌙 BIP-CENet👁️</h1>
   <p align="center">
     <strong>BIP-CENet: A Bilateral Prior–Collaborative Enhancement Network with Dual-Domain Priors for Low-Light Image Enhancement</strong>
   </p>
@@ -171,4 +171,5 @@ Knowledge-Based Systems
 - This README is intended as a project homepage and visual overview of the method.
 - The figures and datasets shown above correspond to the materials described in the paper.
 - Please follow the repository code and configuration files for training and evaluation details.
+
 
