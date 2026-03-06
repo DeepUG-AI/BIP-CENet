@@ -19,9 +19,9 @@
 
 ## 🧾 Overview
 
-BIP-CENet is a low-light image enhancement framework that combines an HVI representation with dual-domain priors defined in the YCbCr space.  
-In the proposed framework, a **luminance statistical prior (LSP)** is constructed from the **Y** channel, and a **chrominance structure prior (CSP)** is derived from **Cb/Cr**.  
-The network adopts a dual-branch architecture and includes three key components: **MCPF**, **GB-CCA**, and **GSE-IRB**.
+BIP-CENet is a low-light image enhancement framework that combines the HVI representation with dual-domain priors defined in the YCbCr space.  
+Specifically, it introduces a luminance statistical prior (LSP) from the Y channel and a chrominance structure prior (CSP) from the Cb and Cr channels to complement the HVI representation in luminance recovery, chrominance modeling, and detail preservation.  
+The network adopts a dual-branch architecture and includes three key components: MCPF, GB-CCA, and GSE-IRB.
 
 ---
 
@@ -171,3 +171,4 @@ Knowledge-Based Systems
 - This README is intended as a project homepage and visual overview of the method.
 - The figures and datasets shown above correspond to the materials described in the paper.
 - Please follow the repository code and configuration files for training and evaluation details.
+
