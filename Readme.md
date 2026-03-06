@@ -112,35 +112,35 @@ The datasets used in this work can be downloaded from the following Baidu Pan li
 
 ---
 
-## 🧩 Core Components
+## 🧩 Core Priors and Modules
 
 <table align="center">
   <thead>
     <tr>
-      <th align="center">Component</th>
+      <th align="center">Name</th>
       <th align="center">Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td align="center"><strong>LSP</strong></td>
-      <td align="center">Luminance statistical prior constructed from the Y channel.</td>
+      <td align="center">Luminance statistical prior constructed from the Y channel to compensate for the intensity representation.</td>
     </tr>
     <tr>
       <td align="center"><strong>CSP</strong></td>
-      <td align="center">Chrominance structure prior derived from Cb/Cr.</td>
+      <td align="center">Chrominance structure prior derived from the Cb and Cr channels to enhance chrominance and structural modeling.</td>
     </tr>
     <tr>
       <td align="center"><strong>MCPF</strong></td>
-      <td align="center">Modulated Cross-Projection Fusion for shallow prior injection.</td>
+      <td align="center">Modulated Cross-Projection Fusion for shallow fuse-then-encode prior injection.</td>
     </tr>
     <tr>
       <td align="center"><strong>GB-CCA</strong></td>
-      <td align="center">Guided Bilateral Channel Cross-Attention for bidirectional interaction between luminance and chrominance branches.</td>
+      <td align="center">Guided Bilateral Channel Cross-Attention for prior-guided bidirectional interaction between luminance and chrominance branches.</td>
     </tr>
     <tr>
       <td align="center"><strong>GSE-IRB</strong></td>
-      <td align="center">Gated SE Inverted Residual Block for lightweight feature enhancement and denoising.</td>
+      <td align="center">Gated SE Inverted Residual Block for lightweight detail enhancement and denoising.</td>
     </tr>
   </tbody>
 </table>
@@ -164,12 +164,6 @@ You Lv, Ru Zhang, Xinhong Hei, Xiaogang Song, Zetian Zhang, Haiyan Tu, Yuping Ta
 **Journal:**  
 Knowledge-Based Systems
 
----
 
-## 📌 Notes
-
-- This README is intended as a project homepage and visual overview of the method.
-- The figures and datasets shown above correspond to the materials described in the paper.
-- Please follow the repository code and configuration files for training and evaluation details.
 
 
