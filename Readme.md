@@ -155,16 +155,3 @@ The datasets used in this work can be downloaded from the following Baidu Pan li
 ## 🏗️ Application Scene
 
 According to the paper, BIP-CENet is also evaluated in underground engineering scenes, where uneven illumination and low-visibility conditions can significantly affect image usability for inspection and engineering analysis.
-
----
-
-## 📄 Paper
-
-**Title:**  
-BIP-CENet: A Bilateral Prior–Collaborative Enhancement Network with Dual-Domain Priors for Low-Light Image Enhancement
-
-**Authors:**  
-You Lv, Ru Zhang, Xinhong Hei, Xiaogang Song, Zetian Zhang, Haiyan Tu, Yuping Tan, Jing Xie, Zhilong Zhang, Xiujuan Zheng, Anlin Zhang, Kun Xiao
-
-**Journal:**  
-Knowledge-Based Systems
